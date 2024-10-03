@@ -9,7 +9,7 @@ Adding new items to the database isn't the only way to contribute to MFC. Tags a
 
 1. Install one of userscript managers available for your browser ([link](https://greasyfork.org/pl/help/installing-user-scripts)).
 
-2. Install the userscript from [Greasyfork](https://greasyfork.org/pl/scripts/468744-mfc-tag-counter) where the userscript is hosted. No account required.
+2. Install the userscript from [Greasy Fork](https://greasyfork.org/pl/scripts/468744-mfc-tag-counter) where the userscript is hosted. No account required.
 
 ### Browser extension
 
