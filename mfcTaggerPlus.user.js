@@ -158,9 +158,9 @@
 	* It's done only once the page is loaded.
 	**/
     function addStyles() {
-        $("<style>")
-        .prop("type", "text/css")
-        .html("\
+		let style = document.createElement('style');
+		style.type = 'text/css';
+		style.innerHTML = "\
             .item-icon ." + TAG_CLASSNAME + " {\
             position: absolute;\
             display: block;\
@@ -171,8 +171,8 @@
             font-weight: 700;\
             color: gold;\
             background-color: darkgreen\
-            }")
-        .appendTo("head");
+            }";
+		document.getElementsByTagName('head')[0].appendChild(style);
     };
     function getEntryContainers() {
         var pathname = window.location.pathname;
@@ -187,11 +187,11 @@
             || pathname.includes("/item/browse/goods/") /* new goods page */
             || pathname.includes("/item/browse/media/") /* new media page */
             || tbParam !== null) {
-            var result = $("#wide .result:not(.hidden)");
+            var result = document.querySelectorAll("#wide .result:not(.hidden)");
             return result;
 		}
         console.log("unsupported getEntryContainers");
-        return $(FAKE_CLASS_PLACEHOLDER);
+        return document.querySelectorAll(FAKE_CLASS_PLACEHOLDER);
     };
 
 	/**
@@ -207,17 +207,17 @@
     };
 
     function getItemsFromContainer(entryContainer) {
-        var icons = $(entryContainer).find(".item-icons .item-icon");
+		var icons = entryContainer.querySelectorAll(".item-icons .item-icon");
         if (icons.length > 0) {
             return icons;
         }
         var pathname = window.location.pathname;
         if (pathname.includes("/browse.v4.php") /* search page, detailed list view */
              && isDetailedList()) {
-            return $(FAKE_CLASS_PLACEHOLDER);
+            return document.querySelectorAll(FAKE_CLASS_PLACEHOLDER);
         }
         console.log("unsupported getItemsFromContainer");
-        return $(FAKE_CLASS_PLACEHOLDER);
+        return document.querySelectorAll(FAKE_CLASS_PLACEHOLDER);
     };
     function getTagCounterFromHtml(html) {
         var parser = new DOMParser();
@@ -267,9 +267,9 @@
     async function main() {
         var cacheQueue = [];
         var entryContainers = getEntryContainers();
-        entryContainers.each(function (i, entryContainer) {
+        entryContainers.forEach((entryContainer) => {
             var itemsElements = getItemsFromContainer(entryContainer);
-            itemsElements.each(function (i, itemElement) {
+            itemsElements.forEach((itemElement) => {
                 cacheQueue.push(itemElement);
             });
         });
