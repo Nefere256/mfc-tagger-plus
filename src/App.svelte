@@ -1,28 +1,4 @@
-// ==UserScript==
-// @name         MFC tag counter
-// @namespace    https://takkkane.tumblr.com/scripts/mfcTagCounter
-// @version      0.1.3
-// @downloadURL	https://raw.githubusercontent.com/Nefere256/userscripts/master/mfc/tagCounter.user.js
-// @description  Adds tags count indicator to list of entries
-// @author       Nefere
-// @supportURL   https://twitter.com/TaxDelusion
-// @match        https://myfigurecollection.net/entry/*
-// @match        https://myfigurecollection.net/browse.v4.php*
-// @match        https://myfigurecollection.net/browse/calendar/*
-
-// @match        https://myfigurecollection.net/*
-// @match        https://myfigurecollection.net/item/browse/figure/
-// @match        https://myfigurecollection.net/item/browse/goods/
-// @match        https://myfigurecollection.net/item/browse/media/
-// @match        https://myfigurecollection.net/item/browse/calendar/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=myfigurecollection.net
-// @license      MIT
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=myfigurecollection.net
-// @license      MIT
-// @grant        GM.getValue
-// @grant        GM.setValue
-// ==/UserScript==
-
+<script >
 (async function () {
     'use strict';
 
@@ -301,3 +277,5 @@
     addStyles();
     main();
 })();
+
+</script>

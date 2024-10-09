@@ -5,12 +5,21 @@ Adding new items to the database isn't the only way to contribute to MFC. Tags a
 
 ## Installing
 
+1. 	Run commands listed below:
+	````
+	npm install
+	npm run build
+	````
+	The files *bundle.js* and *bundle.css* will appear in /dist folder.
+
+## Deploy
+
 ### Userscript manager
 
 1. Install one of userscript managers available for your browser ([link](https://greasyfork.org/pl/help/installing-user-scripts)).
 
-2. Install the userscript:
- * from GitHub. Open raw version of [mfc-tagger-plus.user.js file](https://github.com/Nefere256/mfc-tagger-plus/blob/main/mfcTaggerPlus.user.js) in a browser. If you read it on GitHub, it's possible by clicking the file on the list of files above this README and clicking a "Raw" button.
+2. Install the userscript from one of sources:
+ * the one from [Installing](#Installing) part,
  * from [Greasy Fork](https://greasyfork.org/pl/scripts/468744-mfc-tag-counter) where the userscript is hosted. No account required.
 
 ### Browser extension
