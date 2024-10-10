@@ -1,4 +1,7 @@
 # MFC Tagger Plus
+
+[![Node.js CI](https://github.com/Nefere256/mfc-tagger-plus/actions/workflows/node.js.yml/badge.svg)](https://github.com/Nefere256/mfc-tagger-plus/actions/workflows/node.js.yml)
+
 A set of tools to help [MyFigureCollection](https://myfigurecollection.net/) contributors with tagging items.
 
 Adding new items to the database isn't the only way to contribute to MFC. Tags allow to describe items, and they else help with searching for items with desirable features, or allow to blacklist them. There's so many tags and items to be tagged that proper tools to accelerate the work are needed. That's why this piece of code is made.
