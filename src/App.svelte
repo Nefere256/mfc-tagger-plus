@@ -140,11 +140,15 @@
             .item-icon ." + TAG_CLASSNAME + " {\
             position: absolute;\
             display: block;\
-            right: 1px;\
-            bottom: 1px;\
-            height: 16px;\
-            padding: 0 4px;\
+            right: -4px;\
+            top: -4px;\
+            padding: 4px;\
+            border-radius: 3px;\
+            text-align: center;\
+            vertical-align: middle;\
+            min-width: 12px;\
             font-weight: 700;\
+            font-size: 11px;\
             color: gold;\
             background-color: darkgreen\
             }";
@@ -198,7 +202,9 @@
     function getTagCounterFromHtml(html) {
         var parser = new DOMParser();
         var doc = parser.parseFromString(html, 'text/html');
-        var tagCounterNode = doc.querySelector('.tbx-target-TAGS .count');
+        var tagCounterNode = doc.querySelector("div.tbx-target-TAGS .actions > .meta");
+        if (tagCounterNode == null)
+            console.log("No tag counter element on downloaded html.");
         return tagCounterNode.textContent;
     };
     function addTagCounterToSearchResult(itemLinkElement, countOfTags) {
@@ -220,13 +226,13 @@
                 }
             }).then(function (response) {
                 if (response.ok) {
-                    return response.text();
+                    response.text().then(function (html) {
+                        var countOfTags = getTagCounterFromHtml(html);
+                        addTagCounterToSearchResult(itemLinkElement, countOfTags);
+                        pushToTagCounterCache(entryLink, countOfTags);
+                    });
                 }
                 return Promise.reject(response);
-            }).then(function (html) {
-                var countOfTags = getTagCounterFromHtml(html);
-                addTagCounterToSearchResult(itemLinkElement, countOfTags);
-                pushToTagCounterCache(entryLink, countOfTags);
             }).catch(function (err) {
                 if (err.status == 429) {
                     console.warn('Too many requests. Added the request to fetch later', err.url);
