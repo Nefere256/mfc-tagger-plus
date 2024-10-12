@@ -1,6 +1,7 @@
 <script >
 
     import {initCache, saveTagCounterCache, pushToTagCounterCache, getTagCounterFromTagCounterCache} from './modules/tagCache.js';
+    import TagCounter from './components/tagCounter.svelte';
 (async function () {
     'use strict';
 
@@ -37,31 +38,6 @@
         return new Promise(resolve => setTimeout(resolve, ms));
     };
 
-	/**
-	* Add a style for tag counter container (with a TAG_CLASSNAME class).
-	* It's done only once the page is loaded.
-	**/
-    function addStyles() {
-		let style = document.createElement('style');
-		style.type = 'text/css';
-		style.innerHTML = "\
-            .item-icon ." + TAG_CLASSNAME + " {\
-            position: absolute;\
-            display: block;\
-            right: -4px;\
-            top: -4px;\
-            padding: 4px;\
-            border-radius: 3px;\
-            text-align: center;\
-            vertical-align: middle;\
-            min-width: 12px;\
-            font-weight: 700;\
-            font-size: 11px;\
-            color: gold;\
-            background-color: darkgreen\
-            }";
-		document.getElementsByTagName('head')[0].appendChild(style);
-    };
     function getEntryContainers() {
         var pathname = window.location.pathname;
         var search = window.location.search;
@@ -116,10 +92,12 @@
         return tagCounterNode.textContent;
     };
     function addTagCounterToSearchResult(itemLinkElement, countOfTags) {
-        var tagElement = document.createElement("span");
-        tagElement.setAttribute("class", TAG_CLASSNAME);
-        tagElement.textContent = countOfTags;
-        itemLinkElement.appendChild(tagElement);
+        let tagCounter = new TagCounter({
+            target: itemLinkElement,
+            props: {
+                countOfTags: countOfTags
+            }
+        })
     };
 
     async function fetchAndHandle(queue) {
@@ -188,7 +166,6 @@
 	* All variables and methods are set.
 	* Enjoy the show.
 	**/
-    addStyles();
     main();
 })();
 
